@@ -1,14 +1,16 @@
 const http = require('http');
-const { static, sendFile } = require('./server/static-server');
+const static = require('./server/static-server');
+const api = require('./server/api');
 
 const app = (req, res) => {
-  console.log(req.url);
-  if (req.url.indexOf('public') !== -1) {
-    static(req.url, res);
-  } else if (req.url.indexOf('api') !== -1) {
-    console.log('api request');
+  const url = req.url;
+
+  if (url.indexOf('public') !== -1) {
+    static(url, res);
+  } else if (url.indexOf('api') !== -1) {
+    api(req, res);
   } else {
-    sendFile('index.html', res);
+    static('index.html', res);
   }
 };
 

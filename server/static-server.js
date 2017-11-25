@@ -3,20 +3,13 @@ const fs = require('fs');
 const path = require('path');
 
 const sendFile = (filePath, res) => {
+  res.setHeader('Content-Type', mime.contentType(filePath));
   fs
     .createReadStream(filePath)
-    .on('response', () => {
-      res.setHeader('Content-Type', mime.contentType(filePath));
-    })
-    .pipe(res)
-    .on('end', () => {
-      console.log('response sended');
-      res.end();
-    })
     .on('error', () => {
-      console.log('sending response error');
-      console.log(err);
-    });
+      console.log(`error: ${err}`);
+    })
+    .pipe(res);
 };
 
 const static = (url, res) => {
@@ -32,7 +25,4 @@ const static = (url, res) => {
   });
 };
 
-module.exports = {
-  static,
-  sendFile
-};
+module.exports = static;
