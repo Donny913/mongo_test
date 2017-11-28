@@ -31,28 +31,12 @@
     <h3>Get Data</h3>
     <button id="get-data-btn">Get data</button>
     <div class="input">
-      <label for="author-get">Author</label>
-      <input type="text" id="author-get" name="author-get">
+      <label for="authorGet">Author</label>
+      <input type="text" id="authorGet" name="authorGet">
     </div>
     <div class="input">
-      <label for="title-get">Title</label>
-      <input type="text" id="title-get" name="title-get">
-    </div>
-    <div>
-      <article class="item">
-        <div>Title:
-          <%= item.title %>
-        </div>
-        <div>Content:
-          <%= item.content %>
-        </div>
-        <div>Author:
-          <%= item.author %>
-        </div>
-        <div>ID:
-          <%= item.id %>
-        </div>
-      </article>
+      <label for="titleGet">Title</label>
+      <input type="text" id="titleGet" name="titleGet">
     </div>
   </section>
   <section class="update">
@@ -75,12 +59,17 @@
   </section>
   </section>
   <section class="delete">
-    <h3>Delete Collection</h3>
+    <h3>Delete document</h3>
     <form action="/api/delete-collection" method="post">
       <div class="input">
-        <label for="collectionId">Collection ID</label>
-        <input type="text" id="collectionId" name="collectionId">
+        <label for="docTitle">Document title</label>
+        <input type="text" id="docTitle" name="docTitle">
       </div>
+      <div class="input">
+        <label for="authorName">Author name</label>
+        <input type="text" id="authorName" name="authorName">
+      </div>
+
       <button type="submit">DELETE collection</button>
     </form>
   </section>

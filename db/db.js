@@ -1,78 +1,108 @@
 const url = require('./config').url;
 const mongo = require('mongodb').MongoClient;
 
-const insert = async ({ login, content, title }) => {
+const insert = ({ author, content, title }) => {
   return mongo
     .connect(url)
     .then(db => {
       const collection = db.collection('items');
-      collection.insertOne(
-        {
-          title,
-          content,
-          _id: login
-        },
-        (err, result) => {
-          if (err) {
-            console.log('uuuups, error in inserting data');
-            console.error(err);
+      return new Promise((resolve, reject) => {
+        collection.insertOne(
+          {
+            title,
+            content,
+            author
+          },
+          (err, result) => {
+            db.close();
+            if (err) {
+              reject(err);
+            }
+            resolve(result);
           }
-          db.close();
-        }
-      );
+        );
+      });
     })
     .catch(err => {
       throw err;
     });
 };
 
-const update = ({ login, content, title }) => {
+const update = ({ content, title, author }) => {
   mongo.connect(url, (err, db) => {
-    if (err) throw err;
-    const collection = db.collection(login);
-    collection.updateOne(
-      {
-        title: 'test'
-      },
-      {
-        $set: {
-          content,
+    // const selectorObj =
+    //   content && author
+    //     ? { content, author }
+    //     : content ? { content } : author ? { author } : {};
+
+    return new Promise((resolve, reject) => {
+      db.collection('items').update(
+        {
           title
+        },
+        {
+          $set: {
+            content,
+            title
+          }
+        },
+        (err, result) => {
+          db.close();
+          if (err) reject(err);
+          resolve(result);
         }
-      },
-      (err, result) => {
-        if (err) {
-          console.log('uuuups, error in inserting data');
-          console.error(err);
-        }
-        db.close();
-      }
-    );
-  });
-};
-
-const get = ({ author, title }) => {
-  console.log(author);
-  console.log(title);
-  mongo.connect(url, (err, db) => {
-    if (err) throw err;
-    const collection = db.collection(author);
-    const docs = collection.find({}).toArray();
-  });
-};
-
-const removeCollection = ({ collectionId }) => {
-  mongo.connect(url, (err, db) => {
-    if (err) throw err;
-    db.collection(collectionId, (err, collection) => {
-      if (err) {
-        throw err;
-      }
-      collection.remove({}, (err, removedCollection) => {});
+      );
     });
   });
 };
 
-const db = { insert, update, get, removeCollection };
+const get = ({ author, title }) => {
+  return mongo
+    .connect(url)
+    .then(db => {
+      const selectorObj =
+        author && title
+          ? { author, title }
+          : author ? { author } : title ? { title } : {};
+
+      return new Promise((resolve, reject) => {
+        db
+          .collection('items')
+          .find(selectorObj)
+          .toArray((err, docs) => {
+            db.close();
+            if (err) reject(err);
+            resolve(docs);
+          });
+      });
+    })
+    .catch(err => console.error(err));
+};
+
+const removeDocument = ({ authorName, docTitle }) => {
+  const selectorObj =
+    authorName && docTitle
+      ? { author: authorName, title: docTitle }
+      : authorName
+        ? { author: authorName }
+        : docTitle ? { title: docTitle } : {};
+
+  return mongo
+    .connect(url)
+    .then(db => {
+      return new Promise((resolve, reject) => {
+        db.collection('items').remove(selectorObj, (err, number) => {
+          db.close();
+          if (err) reject(err);
+          resolve(number);
+        });
+      });
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
+const db = { insert, update, get, removeDocument };
 
 module.exports = db;

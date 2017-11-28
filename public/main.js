@@ -1,8 +1,8 @@
 'use strict';
 
 const getDataBtn = document.querySelector('#get-data-btn');
-const authorGet = document.querySelector('#author-get');
-const titleGet = document.querySelector('#title-get');
+const authorGet = document.querySelector('#authorGet');
+const titleGet = document.querySelector('#titleGet');
 
 getDataBtn.addEventListener('click', () => {
   fetch('/api/get-data', {
