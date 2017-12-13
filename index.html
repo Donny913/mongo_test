@@ -9,71 +9,82 @@
 </head>
 
 <body>
-  <section class="insert">
-    <h3>Insert Data</h3>
-    <form action="/api/insert" method="post">
-      <div class="input">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-      </div>
-      <div class="input">
-        <label for="content">Content</label>
-        <input type="text" id="content" name="content">
-      </div>
-      <div class="input">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
-      </div>
-      <button type="submit">INSERT</button>
-    </form>
-  </section>
-  <section class="get">
-    <h3>Get Data</h3>
-    <button id="get-data-btn">Get data</button>
-    <div class="input">
-      <label for="authorGet">Author</label>
-      <input type="text" id="authorGet" name="authorGet">
-    </div>
-    <div class="input">
-      <label for="titleGet">Title</label>
-      <input type="text" id="titleGet" name="titleGet">
-    </div>
-  </section>
-  <section class="update">
-    <h3>Update Data</h3>
-    <form action="/api/update" method="post">
-      <div class="input">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-      </div>
-      <div class="input">
-        <label for="content">Content</label>
-        <input type="text" id="content" name="content">
-      </div>
-      <div class="input">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
-      </div>
-      <button type="submit">UPDATE</button>
-    </form>
-  </section>
-  </section>
-  <section class="delete">
-    <h3>Delete document</h3>
-    <form action="/api/delete-collection" method="post">
-      <div class="input">
-        <label for="docTitle">Document title</label>
-        <input type="text" id="docTitle" name="docTitle">
-      </div>
-      <div class="input">
-        <label for="authorName">Author name</label>
-        <input type="text" id="authorName" name="authorName">
-      </div>
+  <main>
 
-      <button type="submit">DELETE collection</button>
-    </form>
-  </section>
-  <script src="/public/main.js"></script>
+    <section class="insert">
+      <h3>Insert Data</h3>
+      <form action="/api/insert" method="post">
+        <div class="input">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title">
+        </div>
+        <div class="input">
+          <label for="content">Content</label>
+          <input type="text" id="content" name="content">
+        </div>
+        <div class="input">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author">
+        </div>
+        <div class="input">
+          <label for="collection">Collection</label>
+          <input type="text" id="collection" name="collection">
+        </div>
+        <div class="input">
+          <label for="collection2">Collection 2</label>
+          <input type="text" id="collection2" name="collection2">
+        </div>
+        <button type="submit">INSERT</button>
+      </form>
+    </section>
+    <section class="get">
+      <h3>Get Data</h3>
+      <button id="get-data-btn">Get data</button>
+      <div class="input">
+        <label for="authorGet">Author</label>
+        <input type="text" id="authorGet" name="authorGet">
+      </div>
+      <div class="input">
+        <label for="titleGet">Title</label>
+        <input type="text" id="titleGet" name="titleGet">
+      </div>
+    </section>
+    <section class="update">
+      <h3>Update Data</h3>
+      <form action="/api/update" method="post">
+        <div class="input">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title">
+        </div>
+        <div class="input">
+          <label for="content">Content</label>
+          <input type="text" id="content" name="content">
+        </div>
+        <div class="input">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author">
+        </div>
+        <button type="submit">UPDATE</button>
+      </form>
+    </section>
+    </section>
+    <section class="delete">
+      <h3>Delete document</h3>
+      <form action="/api/delete-collection" method="post">
+        <div class="input">
+          <label for="docTitle">Document title</label>
+          <input type="text" id="docTitle" name="docTitle">
+        </div>
+        <div class="input">
+          <label for="authorName">Author name</label>
+          <input type="text" id="authorName" name="authorName">
+        </div>
+
+        <button type="submit">DELETE collection</button>
+      </form>
+    </section>
+    <script src="/public/main.js"></script>
+  </main>
 </body>
 
 </html>

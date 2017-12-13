@@ -1,13 +1,19 @@
 const url = require('./config').url;
 const mongo = require('mongodb').MongoClient;
 
-const insert = ({ author, content, title }) => {
+const insert = ({ author, content, title, collection, collection2 }) => {
   return mongo
     .connect(url)
     .then(db => {
-      const collection = db.collection('items');
+      let dbCollection;
+      // to do find embeded collections
+      if (collection && collection2) {
+        dbCollection = db.collection(collection);
+      } else {
+        dbCollection = db.collection(collection);
+      }
       return new Promise((resolve, reject) => {
-        collection.insertOne(
+        dbCollection.insertOne(
           {
             title,
             content,
@@ -29,7 +35,7 @@ const insert = ({ author, content, title }) => {
 };
 
 const update = ({ content, title, author }) => {
-  mongo.connect(url, (err, db) => {
+  return mongo.connect(url, (err, db) => {
     // const selectorObj =
     //   content && author
     //     ? { content, author }
