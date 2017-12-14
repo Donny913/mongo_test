@@ -95,6 +95,7 @@ const removeDocument = ({ authorName, docTitle }) => {
 
   return mongo
     .connect(url)
+    
     .then(db => {
       return new Promise((resolve, reject) => {
         db.collection('items').remove(selectorObj, (err, number) => {

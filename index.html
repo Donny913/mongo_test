@@ -34,20 +34,22 @@
           <label for="collection2">Collection 2</label>
           <input type="text" id="collection2" name="collection2">
         </div>
-        <button type="submit">INSERT</button>
+        <button type="submit" class="form-button">INSERT</button>
       </form>
     </section>
     <section class="get">
-      <h3>Get Data</h3>
-      <button id="get-data-btn">Get data</button>
-      <div class="input">
-        <label for="authorGet">Author</label>
-        <input type="text" id="authorGet" name="authorGet">
-      </div>
-      <div class="input">
-        <label for="titleGet">Title</label>
-        <input type="text" id="titleGet" name="titleGet">
-      </div>
+      <form>
+        <h3>Get Data</h3>
+        <div class="input">
+          <label for="authorGet">Author</label>
+          <input type="text" id="authorGet" name="authorGet">
+        </div>
+        <div class="input">
+          <label for="titleGet">Title</label>
+          <input type="text" id="titleGet" name="titleGet">
+        </div>
+        <button id="get-data-btn" class="form-button">Get data</button>
+      </form>
     </section>
     <section class="update">
       <h3>Update Data</h3>
@@ -64,7 +66,7 @@
           <label for="author">Author</label>
           <input type="text" id="author" name="author">
         </div>
-        <button type="submit">UPDATE</button>
+        <button type="submit" class="form-button">UPDATE</button>
       </form>
     </section>
     </section>
@@ -79,8 +81,7 @@
           <label for="authorName">Author name</label>
           <input type="text" id="authorName" name="authorName">
         </div>
-
-        <button type="submit">DELETE collection</button>
+        <button type="submit" class="form-button">DELETE</button>
       </form>
     </section>
     <script src="/public/main.js"></script>

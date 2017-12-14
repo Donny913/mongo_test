@@ -1,5 +1,4 @@
 body {
-  padding: 20px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   color: #f7f6f6;
 }
@@ -8,7 +7,7 @@ main {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 a {
@@ -22,27 +21,37 @@ section {
   width: 300px;
   box-shadow: 3px 3px 1px #34495e;
   min-height: 400px;
+  display: flex;
+  flex-flow: column;
 }
 
 section h3 {
   border-bottom: 1px solid #f7f6f6;
   padding-bottom: 5px;
+  margin: 0;
+}
+
+form {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  flex: 2;
 }
 
 .insert {
-  background: #8c4246;
+  background: #8a1b12;
 }
 
 .get {
-  background: #927982;
+  background: #658357;
 }
 
 .update {
-  background: #006970;
+  background: #278462;
 }
 
 .delete {
-  background: #003337;
+  background: #007a86;
 }
 
 .input label {
@@ -52,29 +61,36 @@ section h3 {
   font-size: 18px;
 }
 
-input,
-button {
+input {
   font: inherit;
   border-radius: 10px;
   font: inherit;
   width: 95%;
   border: 0px;
   outline: none;
-  padding: 2px 5px;
+  padding: 2px 10px;
   min-height: 25px;
 }
 
 button {
-  margin-top: 10px;
+  width: 50%;
+  display: block;
+  margin: 22px auto;
   border: none;
   box-shadow: 1px 1px 1px #34495e;
-  border-radius: 0;
-  background: #ecf0f1;
+  border-radius: 7px;
+  background: #217dda;
   cursor: pointer;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: #f7f6f6;
+  transition: text-shadow 0.4s ease-in-out;
+  min-height: 30px;
+  font-size: 16px;
 }
 
 button:hover {
-  background: #bdc3c7;
+  background: #3a96f3;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .item {
@@ -86,4 +102,8 @@ button:hover {
 
 .input {
   margin: 10px 0;
+}
+
+form .form-button {
+  margin-top: auto;
 }
